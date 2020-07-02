@@ -2,3 +2,15 @@
  color: rgb(63, 63, 63);
  padding: 20px;
 }
+
+.App {
+ margin: 20px auto;
+ padding: 15px;
+ width: fit-content;
+ -webkit-box-shadow: -8px 0px 15px 0px #d0d0d0;
+ -moz-box-shadow: -8px 0px 15px 0px #d0d0d0;
+ box-shadow: -8px 0px 15px 0px #d0d0d0;
+ border-radius: 11px;
+ -moz-border-radius: 11px;
+ -webkit-border-radius: 11px;
+}
