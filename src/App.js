@@ -4,26 +4,34 @@ import axios from "axios";
 import Card from "./Card";
 
 function App() {
+ const callAPI = () => {
+  console.log("hello");
+ };
  const [poll, setPoll] = useState({ city: "", aqius: "" });
+ const [changeSearch, setchangeSearch] = useState();
  useEffect(() => {
   axios
    .get(
-    `https://api.airvisual.com/v2/city?city=Los Angeles&state=California&country=USA&key=66945069-266e-4ac7-8756-56f354653a92`
+    `https://api.airvisual.com/v2/city?city=Belgrade&state=Central-Serbia&country=Serbia&key=66945069-266e-4ac7-8756-56f354653a92`
    )
    .then(res => {
     console.log("res", res);
     const results = res.data;
     setPoll({
      city: results.data.city,
-     aqius: results.data.current.pollution.aqius
+     aqius: results.data.current.pollution.aqius,
+     tp: results.data.current.weather.tp
     });
    });
  }, []);
- console.log(poll);
  return (
   <div className="App">
-   {" "}
-   <Card city={poll.city} aqius={poll.aqius} />{" "}
+   <input
+    type="text"
+    onKeyUp={() => callAPI()}
+    onChange={e => setchangeSearch(e.target.value)}
+   />
+   <Card city={poll.city} aqius={poll.aqius} tp={poll.tp} />{" "}
   </div>
  );
 }
