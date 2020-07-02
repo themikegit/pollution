@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Card from "./Card";
 
 function App() {
- axios
-  .get(
-   `//https://api.airvisual.com/v2/city?city=Los Angeles&state=California&country=USA&key=66945069-266e-4ac7-8756-56f354653a92`
-  )
-  .then(res => {
-   const dataVal = res.data;
-   console.log("dataVal", dataVal);
-  });
-
+ const [poll, setPoll] = useState({ city: "", aqius: "" });
+ useEffect(() => {
+  axios
+   .get(
+    `https://api.airvisual.com/v2/city?city=Los Angeles&state=California&country=USA&key=66945069-266e-4ac7-8756-56f354653a92`
+   )
+   .then(res => {
+    console.log("res", res);
+    const results = res.data;
+    setPoll({
+     city: results.data.city,
+     aqius: results.data.current.pollution.aqius
+    });
+   });
+ }, []);
+ console.log(poll);
  return (
   <div className="App">
-   <Card />
+   {" "}
+   <Card city={poll.city} aqius={poll.aqius} />{" "}
   </div>
  );
 }
