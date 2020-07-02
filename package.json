@@ -1,5 +1,5 @@
 {
- "hamepage": "http://themikegit.github.io/pollution",
+ "homepage": "http://themikegit.github.io/pollution",
  "version": "0.1.0",
  "private": true,
  "dependencies": {
