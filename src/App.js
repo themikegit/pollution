@@ -12,7 +12,7 @@ function App() {
  useEffect(() => {
   axios
    .get(
-    `/https://api.airvisual.com/v2/city?city=Belgrade&state=Central-Serbia&country=Serbia&key=66945069-266e-4ac7-8756-56f354653a92`
+    `https://api.airvisual.com/v2/city?city=Belgrade&state=Central-Serbia&country=Serbia&key=66945069-266e-4ac7-8756-56f354653a92`
    )
    .then(res => {
     console.log("res", res);
