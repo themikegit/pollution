@@ -2,7 +2,7 @@ import React from "react";
 import "./styling.css";
 import ReactStoreIndicator from "react-score-indicator";
 
-export default function Card({ city, aqius, tp }) {
+export default function Card({ city, aqius, tp, ts, hu }) {
  let des = "";
  switch (true) {
   case aqius < 50:
@@ -24,25 +24,46 @@ export default function Card({ city, aqius, tp }) {
    des = "Hazardous";
    break;
  }
+ let dt = new Date(ts).toLocaleDateString();
 
  return (
   <div className="wrap">
+   <p> {dt} </p>
+   <h2>{city} </h2>
    <ReactStoreIndicator
     stepsColors={[
-     "#3da940",
-     "#3da940",
-     "#3da940",
-     "#53b83a",
-     "#ed8d00",
-     "#d12000"
+     "#4265D7",
+     "#4265D7",
+     "#4265D7",
+     "#4265D7",
+     "#4265D7",
+     "#4265D7"
     ]}
     value={aqius}
     maxValue={500}
+    textStyle={{ fontSize: "22px" }}
+    style={{
+     backgroundColor: "white",
+     boxShadow: "-8px 0px 15px 0px #d0d0d0",
+     padding: "20px",
+     borderRadius: "120px"
+    }}
    />
-   <h3> {des} </h3>
-   <h2> {city} </h2>
-   <p> temp: {tp} </p>
-   <div className="indicator"></div>
+   <div className="desc">
+    <p> Air Polution </p>
+    <h3>{des} </h3>
+   </div>
+
+   <div className="indicators">
+    <div className="other">
+     <p> Hum: </p>
+     <h1> {hu}% </h1>
+    </div>
+    <div className="temp">
+     <p> temp: </p>
+     <h1>{tp}&deg;</h1>
+    </div>
+   </div>
   </div>
  );
 }

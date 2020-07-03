@@ -4,11 +4,7 @@ import axios from "axios";
 import Card from "./Card";
 
 function App() {
- const callAPI = () => {
-  console.log("hello");
- };
  const [poll, setPoll] = useState({ city: "", aqius: "" });
- const [changeSearch, setchangeSearch] = useState();
  useEffect(() => {
   axios
    .get(
@@ -20,18 +16,21 @@ function App() {
     setPoll({
      city: results.data.city,
      aqius: results.data.current.pollution.aqius,
-     tp: results.data.current.weather.tp
+     tp: results.data.current.weather.tp,
+     hu: results.data.current.weather.hu,
+     ts: results.data.current.weather.ts
     });
    });
  }, []);
  return (
   <div className="App">
-   <input
-    type="text"
-    onKeyUp={() => callAPI()}
-    onChange={e => setchangeSearch(e.target.value)}
-   />
-   <Card city={poll.city} aqius={poll.aqius} tp={poll.tp} />{" "}
+   <Card
+    city={poll.city}
+    aqius={poll.aqius}
+    tp={poll.tp}
+    ts={poll.ts}
+    hu={poll.hu}
+   />{" "}
   </div>
  );
 }
