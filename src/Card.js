@@ -1,7 +1,6 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import "./styling.css";
 import axios from "axios";
-
 import ReactStoreIndicator from "react-score-indicator";
 
 export default function Card() {
@@ -73,11 +72,7 @@ export default function Card() {
      <h1> {poll.hu}% </h1>
     </div>
     <div className="temp">
-     {poll.ic ? (
-      <img style={{ width: "50px" }} src={poll.ic} />
-     ) : (
-      <p>loading..</p>
-     )}
+     {<img style={{ width: "50px", height: "50px" }} src={poll.ic} />}
 
      <p> temp: </p>
      <h1>{poll.tp}&deg;</h1>
